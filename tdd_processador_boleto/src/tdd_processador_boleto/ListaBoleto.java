@@ -25,5 +25,16 @@ public class ListaBoleto {
 	public void addItem(Boleto boleto) {
 		boletos.add(boleto);
 	}
-
+	
+	public void removeItem(Boleto boleto){
+		boletos.remove(boleto);
+		}
+	
+	public int getQtdeItems() {
+		return boletos.size();
+	}
+	
+	public void esvazia() {
+		boletos.clear();
+	}
 }
