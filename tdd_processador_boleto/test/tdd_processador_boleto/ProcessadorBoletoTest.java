@@ -11,6 +11,7 @@ public class ProcessadorBoletoTest {
 	Boleto boleto2;
 	ListaBoleto listaBoleto;
 	Fatura fatura;
+	ProcessadorBoleto processador;
 	
 	@BeforeEach
 	public void inicializaBoleto() {
@@ -25,9 +26,13 @@ public class ProcessadorBoletoTest {
 	
 	@BeforeEach
 	public void inicializaFatura() {
-		fatura = new Fatura("Pedro", "12/10/2020", 1000.00);	
+		fatura = new Fatura("Pedro", "12/10/2020", 600.00);	
 	}
-	
+
+	@BeforeEach
+	public void inicializaProcessadorBoleto() {
+		processador = new ProcessadorBoleto();
+			
 	@Test
 	public void verificaInformaçõesBoleto() {
 		Assertions.assertAll("boleto",
@@ -51,7 +56,13 @@ public class ProcessadorBoletoTest {
 		Assertions.assertAll("fatura",
 				() -> assertEquals("Pedro", fatura.getNome()),
 				() -> assertEquals("12/10/2020", fatura.getData()),
-				() -> assertEquals(1000.00, fatura.getValor())
+				() -> assertEquals(600.00, fatura.getValor())
 				);
+	}
+	
+	@Test
+	public void verificaPagamento() {
+		String pagamento = processador.validaPagamento();
+		Assertions.assertEquals("PAGO", pagamento);
 	}
 }
