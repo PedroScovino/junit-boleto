@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProcessadorBoletoTest {
 
 	Boleto boleto;
+	Boleto boleto2;
 	ListaBoleto listaBoleto;
 	
 	@BeforeEach
 	public void inicializaBoleto() {
 		boleto = new Boleto(1, "12/10/2020", 225.00);
+		boleto2 = new Boleto(2, "12/10/2020", 500.00);
 	}
 	
 	@BeforeEach
@@ -32,7 +34,8 @@ public class ProcessadorBoletoTest {
 	@Test
 	public void verificaValorTotal() {
 		listaBoleto.addItem(boleto);
+		listaBoleto.addItem(boleto2);
 		double valor = listaBoleto.getValorTotal();
-		Assertions.assertEquals(225.00, valor);
+		Assertions.assertEquals(725.00, valor);
 	}
 }
