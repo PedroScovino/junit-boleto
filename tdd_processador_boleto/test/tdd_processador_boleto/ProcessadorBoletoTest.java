@@ -30,9 +30,10 @@ public class ProcessadorBoletoTest {
 	}
 
 	@BeforeEach
-	public void inicializaProcessadorBoleto() {
-		processador = new ProcessadorBoleto();
-			
+	public void inicializaProcessador() {
+		processador = new ProcessadorBoleto();	
+	}
+	
 	@Test
 	public void verificaInformaçõesBoleto() {
 		Assertions.assertAll("boleto",
@@ -62,7 +63,9 @@ public class ProcessadorBoletoTest {
 	
 	@Test
 	public void verificaPagamento() {
-		String pagamento = processador.validaPagamento();
+		listaBoleto.addItem(boleto);
+		listaBoleto.addItem(boleto2);
+		String pagamento = processador.processaPagamento(listaBoleto, fatura);
 		Assertions.assertEquals("PAGO", pagamento);
 	}
 }
