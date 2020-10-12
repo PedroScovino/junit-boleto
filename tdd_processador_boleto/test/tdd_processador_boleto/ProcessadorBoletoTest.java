@@ -12,7 +12,7 @@ public class ProcessadorBoletoTest {
 	
 	@BeforeEach
 	public void inicializaBoleto() {
-		boleto = new Boleto(1, "12/10/2020", 50.00);
+		boleto = new Boleto(1, "12/10/2020", 225.00);
 	}
 	
 	@BeforeEach
@@ -25,12 +25,13 @@ public class ProcessadorBoletoTest {
 		Assertions.assertAll("boleto",
 				() -> assertEquals(1, boleto.getCodBoleto()),
 				() -> assertEquals("12/10/2020", boleto.getData()),
-				() -> assertEquals(50.00, boleto.getValor())
+				() -> assertEquals(225.00, boleto.getValor())
 				);
 	}
 	
 	@Test
 	public void verificaValorTotal() {
+		listaBoleto.addItem(boleto);
 		double valor = listaBoleto.getValorTotal();
 		Assertions.assertEquals(225.00, valor);
 	}

@@ -2,7 +2,6 @@ package tdd_processador_boleto;
 
 public class Boleto {
 
-
 	private int codBoleto;
 	private String data;
 	private double valor;
