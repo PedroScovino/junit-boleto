@@ -10,6 +10,7 @@ public class ProcessadorBoletoTest {
 	Boleto boleto;
 	Boleto boleto2;
 	ListaBoleto listaBoleto;
+	Fatura fatura;
 	
 	@BeforeEach
 	public void inicializaBoleto() {
@@ -20,6 +21,11 @@ public class ProcessadorBoletoTest {
 	@BeforeEach
 	public void inicializaListaBoleto() {
 		listaBoleto = new ListaBoleto();
+	}
+	
+	@BeforeEach
+	public void inicializaFatura() {
+		fatura = new Fatura("Pedro", "12/10/2020", 1000.00);	
 	}
 	
 	@Test
@@ -37,5 +43,15 @@ public class ProcessadorBoletoTest {
 		listaBoleto.addItem(boleto2);
 		double valor = listaBoleto.getValorTotal();
 		Assertions.assertEquals(725.00, valor);
+	}
+	
+
+	@Test
+	public void verificaInformaçõesFatura() {
+		Assertions.assertAll("fatura",
+				() -> assertEquals("Pedro", fatura.getNome()),
+				() -> assertEquals("12/10/2020", fatura.getData()),
+				() -> assertEquals(1000.00, fatura.getValor())
+				);
 	}
 }
